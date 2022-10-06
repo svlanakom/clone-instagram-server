@@ -11,13 +11,13 @@ const cors = require("cors");
 dbConnect().catch(err => console.log(err));
 
 async function dbConnect() {
-  await mongoose.connect('mongodb+srv://admin:admin@cluster0.ndsjr.mongodb.net/?retryWrites=true&w=majority');
+  await mongoose.connect('mongodb+srv://admin:<password>@cluster0.ndsjr.mongodb.net/?retryWrites=true&w=majority');
 }
 
 require('./auth/auth');
 
 const app = express();
-const port = 3003
+const port = normalizePort(process.env.PORT || '3003')
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -29,3 +29,14 @@ app.use('/users', usersRouter);
 app.listen(port, () => {
   console.log(`Exsample app listening on port ${port}`)
 });
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+  if (isNaN(port)) {
+    return val;
+  }
+  if (port >= 0) {
+    return port
+  }
+  return false;
+}
