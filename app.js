@@ -17,7 +17,7 @@ async function dbConnect() {
 require('./auth/auth');
 
 const app = express();
-const port = normalizePort(process.env.PORT || '3003')
+const port = normalizePort(process.env.PORT || '3004')
 app.use(bodyParser.json());
 app.use(cors());
 
