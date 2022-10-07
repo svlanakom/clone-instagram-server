@@ -11,7 +11,7 @@ const cors = require("cors");
 dbConnect().catch(err => console.log(err));
 
 async function dbConnect() {
-  await mongoose.connect('mongodb+srv://admin:<password>@cluster0.ndsjr.mongodb.net/?retryWrites=true&w=majority');
+  await mongoose.connect('mongodb+srv://admin:admin@cluster0.ndsjr.mongodb.net/?retryWrites=true&w=majority');
 }
 require('./auth/auth');
 
