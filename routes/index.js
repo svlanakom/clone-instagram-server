@@ -54,7 +54,7 @@ router.delete('/deletepost/:id', passport.authenticate('jwt', { session: false }
     res.sendStatus(200);
 });
 
-router.post('/editpost/:id', passport.authenticate('jwt', { session: false }), upload.single('image'), async (req, res) => {
+router.post('/editepost/:id', passport.authenticate('jwt', { session: false }), upload.single('image'), async (req, res) => {
     const post = await Post.findByIdAndUpdate({ _id: req.params.id }, req.body);
     if (req.file) {
         fs.unlink(post.imagePath, (err) => {
