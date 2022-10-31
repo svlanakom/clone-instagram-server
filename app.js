@@ -6,13 +6,13 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users')
 const cors = require("cors");
 
-
-
 dbConnect().catch(err => console.log(err));
 
 async function dbConnect() {
-  await mongoose.connect('mongodb+srv://admin:admin@cluster0.fvipqgf.mongodb.net/?retryWrites=true&w=majority');
+  // await mongoose.connect('mongodb://localhost:27017');
+  await mongoose.connect('mongodb+srv://admin:admin@cluster0.bt4l5nz.mongodb.net/?retryWrites=true&w=majority');
 }
+
 require('./auth/auth');
 
 const app = express();

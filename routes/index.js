@@ -21,6 +21,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage, limits: { fileSize: 5 * 1024 * 1024 } });
 
 router.post('/createpost', passport.authenticate('jwt', { session: false }), upload.single('image'), async (req, res) => {
+    console.log(req.body);
+    console.log(req.file);
     const post = await Post.create({
         userId: req.user._id,
         imagePath: req.file.path,

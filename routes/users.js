@@ -31,15 +31,16 @@ router.get('/get', passport.authenticate('jwt', { session: false }), async (req,
     res.status(200).send(users);
 });
 
-router.get('/available/:email', async (req, res) => {
-    const user = await User.findOne({ email: req.params.email });
-    console.log(user);
-    res.status(200).send(!user);
-});
 router.get('/get/:email', passport.authenticate('jwt', { session: false }), async (req, res) => {
     const user = await User.findOne({ email: req.params.email });
     console.log(user);
     res.status(200).send(user || {});
+});
+
+router.get('/available/:email', async (req, res) => {
+    const user = await User.findOne({ email: req.params.email });
+    console.log(user);
+    res.status(200).send(!user);
 });
 
 router.delete('/delete/:email', passport.authenticate('jwt', { session: false }), async (req, res) => {
